@@ -1,0 +1,239 @@
+    1  wc sequences.nt.fa
+    2  head sequences.nt.fa
+    3  curl -o https://raw.githubusercontent.com/srobb1/pfb2017/master/files/sequences.nt.fa
+    4  curl --help
+    5  curl -0 https://raw.githubusercontent.com/srobb1/pfb2017/master/files/sequences.nt.fa
+    6  ls
+    7  la -lah
+    8  la -a
+    9  ls -a
+   10  ls -lah
+   11  curl --help
+   12  cw sequences.nt.fa.1
+   13  wc sequences.nt.fa.1
+   14  head sequences.nt.fa.1
+   15  tail sequences.nt.fa.1
+   16  grep sequences.nt.fa.1
+   17  more sequences.nt.fa.1
+   18  man mv
+   19  mv sequences.nt.fa.1 cancer_genes.fasta
+   20  ls
+   21  rm sequences.nt.fa 
+   22  ls
+   23  more cancer_genes.fasta 
+   24  curl -0 https://raw.githubusercontent.com/srobb1/pfb2017/master/files/cuffdiff.txt
+   25  ls
+   26  wget https://raw.githubusercontent.com/srobb1/pfb2017/master/files/cuffdiff.txt
+   27  wget --no-check-certificate https://raw.githubusercontent.com/srobb1/pfb2017/master/files/cuffdiff.txt
+   28  ls
+   29  head cuffdiff.txt 
+   30  column cuffdiff.txt 
+   31  man sort
+   32  head cuffdiff.txt 
+   33  sort -r -k10 cuffdiff.txt 
+   34  head cuffdiff.txt 
+   35  sort -r -k10 cuffdiff.txt > sortedcuffdiff.txt
+   36  head sortedcuffdiff.txt 
+   37  head sortedcuffdiff.txt | column -t
+   38  column -t sortedcuffdiff.txt | less
+   39  man sort
+   40  sort -r -g -k10 cuffdiff.txt 
+   41  sort -r -g -k10 cuffdiff.txt > sortedcuffdiff.text
+   42  ls
+   43  rm sortedcuffdiff.t
+   44  rm sortedcuffdiff.text
+   45  rm sortedcuffdiff.txt 
+   46  ls
+   47  sort -r -g -k10 > sortedcuffdiff.txt
+   48  sort -r -g -k10 cuffdiff.txt > sortedcuffdiff.txt
+   49  ls
+   50  head cuffdiff.txt 
+   51  head sortedcuffdiff.txt 
+   52  head sortedcuffdiff.txt | column -t
+   53  mv sortedcuffdiff.txt sorted.cuffdiff.out
+   54  ls
+   55  man sort
+   56  man head
+   57  head -100 sorted.cuffdiff.out 
+   58  head -100 sorted.cuffdiff.out > top100.sorted.cuffdiff.out
+   59  ls
+   60  head top100.sortedcuffdiff.txt | column -t
+   61  head top100.sorted.cuffdiff.txt | column -t
+   62  head top100.sorted.cuffdiff.out | column -t
+   63  man cut
+   64  cut -d 1 top100.sorted.cuffdiff.out 
+   65  cut -c top100.sorted.cuffdiff.out 
+   66  cut -c1 top100.sorted.cuffdiff.out 
+   67  cut -c n top100.sorted.cuffdiff.out 
+   68  man cut
+   69  cut -f1 top100.sorted.cuffdiff.out 
+   70  cut -f1 top100.sorted.cuffdiff.out > differentially.expressed.genes.txt
+   71  ls
+   72  nano firstFile.txt
+   73  nano README.md
+   74  echo "# PfB2017_problemsets" >> README.md
+   75  git init
+   76  git add README.md
+   77  git commit -m "first commit"
+   78  git remote add origin https://github.com/iwema/PfB2017_problemsets.git
+   79  git push -u origin master
+   80  ls
+   81  ~
+   82  cd
+   83  ls
+   84  problemsets
+   85  cd problemsets/
+   86  ls
+   87  ~
+   88  cd
+   89  mv problemsets/ PfB2017_problemsets/
+   90  cd PfB2017_problemsets/
+   91  ls
+   92  mv problemsets/ Unix1_problemset
+   93  ls
+   94  git add Unix1_problemset/
+   95  git commit -m 'adding previous problem set files'
+   96  git push
+   97  git push --set-upstream origin master
+   98  git remote add origin https://github.com/iwema/PfB2017_problemsets.git
+   99  git push origin master
+  100  git fetch master
+  101  git fetch origin
+  102  git add Unix1_problemset/
+  103  git commit -m 'adding previous problem set files'
+  104  git push origin master
+  105  git push 
+  106  ls -lh
+  107  git fetch master
+  108  git status
+  109  ls
+  110  ls
+  111  git add Unix1_problemset/
+  112  git status
+  113  ls Unix1_problemset/
+  114  git add Unix1_problemset/*
+  115  get status
+  116  git status
+  117  git push origin master
+  118  git pull origin master
+  119  git push origin master
+  120  cd
+  121  ~
+  122  ssh-keygen -t rsa -b 4096 -C "iwema@pitt.edu"
+  123  cd PfB2017_problemsets/
+  124  mkdir files
+  125  ls
+  126  cd files
+  127  mv cancer_genes.fasta
+  128  cd
+  129  cd PfB2017_problemsets/
+  130  ls
+  131  cd Unix1_problemset/
+  132  ls
+  133  mv cancer_genes.fasta /Users/admin/PfB2017_problemsets/
+  134  ls
+  135  cd
+  136  cd PfB2017_problemsets/
+  137  ls
+  138  cd PfB_problemsets/
+  139  ls
+  140  cd
+  141  cd PfB2017_problemsets/
+  142  cd cancer_genes.fasta files
+  143  mv cancer_genes.fasta files
+  144  cd files
+  145  ls
+  146  git add files/cancer_genes.fasta
+  147  cd
+  148  cd PfB2017_problemsets/
+  149  ls
+  150  git add files/cancer_genes.fasta 
+  151  git commit -m 'adding cancer_genes.fasta'
+  152  git push
+  153  git push origin master
+  154  nano mysequences.txt
+  155  ls
+  156  mv mysequences.txt files
+  157  cd files
+  158  ls
+  159  cd
+  160  cd PfB2017_problemsets/
+  161  cd files
+  162  git add mysequences.txt 
+  163  git commit -m 'adding mysequences.txt'
+  164  git push origin master
+  165  cd
+  166  mkdir fastas
+  167  cd fastas
+  168  cd
+  169  PfB2017_problemsets/
+  170  cd files
+  171  ls
+  172  cd PfB2017_problemsets/
+  173  cd files
+  174  ls
+  175  cp cancer_genes.fasta fastas
+  176  cd
+  177  PfB2017_problemsets/
+  178  ls
+  179  cd files
+  180  ls
+  181  cd PfB2017_problemsets/
+  182  ls
+  183  cd files
+  184  ls
+  185  cd fastas
+  186  cd
+  187  cd
+  188  ls
+  189  cd PbB
+  190  ls
+  191  cd PfB2017_problemsets/
+  192  cd fastas
+  193  cd
+  194  ls
+  195  cd fastas
+  196  ls
+  197  cd
+  198  cd PfB2017_problemsets/
+  199  cd files
+  200  ls
+  201  cp cancer_genes.fasta ~/fastas/
+  202  cd
+  203  ls
+  204  cd fastas
+  205  ls
+  206  cd ../
+  207  ls
+  208  cd PfB2017_problemsets/
+  209  cd files
+  210  ls
+  211  rm fastas 
+  212  ls
+  213  rm cancer_genes.fasta 
+  214  ls
+  215  cd
+  216  cd PfB2017_problemsets/
+  217  cd
+  218  mv fastas/ PfB2017_problemsets/
+  219  ls
+  220  cd PfB2017_problemsets/
+  221  ls
+  222  rm PfB_problemsets/
+  223  rm PfB_problemsets
+  224  ls
+  225  git add all *
+  226  cd fastas
+  227  git add all *
+  228  ..?
+  229  ../
+  230  cd ../
+  231  git add fastas
+  232  git commit -m 'adding fastas'
+  233  git push
+  234  git push origin master
+  235  man rm
+  236  man cp
+  237  cd
+  238  history
+  239  history > history.txt
