@@ -1,0 +1,2 @@
+nano git_exercises.txt
+I don't know what I'm doing.
