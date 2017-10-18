@@ -77,5 +77,22 @@ print ('This is a sorted list of the fragments:' , frag_list)
 
 #Q10 sorted by fragment length
 
+frag_sort = sorted (frag_list, key=lambda x:len(x))
+print ('This is the fragments sorted by length, smallest to largest:', frag_sort)
+
+# I feel like I cheated on the previous one...we haven't learned lambda...
+
+#Q11 compare 2 ways to copy a list
+
+colors = ['scarlet' , 'teal' , 'black']
+faves = colors
+faves.append('grey')
+print (colors)
+faves2=colors.copy()
+faves2.append('white')
+print (colors)
+print (faves2)
+print (faves)
+
 
 
