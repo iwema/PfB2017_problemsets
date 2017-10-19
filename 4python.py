@@ -36,3 +36,9 @@ for num in numbers:
      print (num)
 
 #Q4 sort above list, iterate and print, calculate, print
+
+for num in numbers:
+   if num % 2 == 0:
+     print ('This number is even:' , num)
+   else:
+     print ('This number is odd:' , num)
