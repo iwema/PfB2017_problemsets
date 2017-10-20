@@ -29,11 +29,20 @@ print("wrote 'Rob.txt'")
 
 #Q3 fasta pattern matching
 
-histones = open ('Python_06.fasta.1' , 'r')
-hisseq = histones.read()
-for header in re.finditer(r">.+$, hisseq, re.M):
-   print(header)
-
+with open ("Python_06.fasta", "r") as Histones:
+   sequences = Histones.read()
+   sequences = re.split("^>", sequences, re.M)
+   del sequences[0]
+   Histones.close()
+print("Converting FASTA file from multiline to single line and writing to file.")
+with open ("Histones_saved", "w") as newFasta:
+   for fasta in sequences:
+      header, sequence = fasta.split("\n", 1)
+      header = ">" + header + "\n"
+      sequence = sequence.replace("\n","")
+      newFasta.write(header + sequence)
+   newFasta.close()
+print(">>Done!")
 
 
 
