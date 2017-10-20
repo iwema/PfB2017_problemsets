@@ -6,47 +6,47 @@
 
 petty = open("Python_05.txt" , "r")
 for lyr in petty:
-   lyr = lyr.upper()
-   print (lyr)
+   lyr = lyr.rstrip("\n")
+   print (lyr.upper())
 
 #Q2 modify script to write to new file
 
 petty_read = open("Python_05.txt" , "r")
-petty_write = open("Python_05_uc.txt")
+petty_write = open("Python_05_uc.txt", "w")
 for lyr in petty:
-  lyr = lyr.upper()
-  print (lyr)
+  lyr = lyr.rstrip("\n")
+  print (lyr.upper() + "\n")
+petty_write.close()
 print ("Wrote 'Python_05_uc.txt' ")
 
 
 
 #Q3 open/print revcomp fasta seq
 
-sequences = open("Python_05.fasta", "r")
-for gene in sequences:
-   print (gene)
+seq_in = open("Python_05.fasta", "r")
+seq_out = open("Python_05_rc.txt", "w")
+fasta ={}
+def_gene = ""
 
+for gene in seq_in:
+   gene = gene.rstrip("\n")
+   if gene.startswith(">"):
+      def_gene = gene
 
-rc_genes = {}
+   else:
+      if def_gene in fasta:
+         fasta[def_gene] += gene
+      else:
+         fasta[def_gene] = gene
 
-for gene in sequences:
-   gene = gene.rstrip()
-   id, seq = gene.split()
+for id in fasta:    #complement sequence
+   comp = fasta[id].replace("A" , "t")
+   comp = comp.replace("T" , "a")
+   comp = comp.replace("G" , "c")
+   comp = comp.replace("C" , "g")   #upper next
+   comp = comp.upper()    #reverse
+   rev_comp = comp[::-1]
+   seq_out.write(id + "rev_comp\n" + rev_comp + "\n")
 
-   rc_genes[id] = seq
-sequences.close()
-print(rc_genes)
-  
-fasta = open("Python_05.fasta" , "r")
-sequences = {}
-order = []
-for seq in fasta:
-    if seq.startswith('>'):
-       name = seq[1:].rstrip('\n')
-       order.append(name)
-       sequences[name] = ''
-    else:
-       sequences[name] += seq.rstrip('\n').rstrip('*')
-print (sequences)
-
-
+seq_out.close()
+seq_in.close()
