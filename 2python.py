@@ -68,6 +68,7 @@ if number >= 0 :
 		if number % 2 == 0 :
 			message = "is an even number"
 			print (number, message)
+
 	elif number == 50 :
 		message = 'is equal to 50'
 		print (number, message)
