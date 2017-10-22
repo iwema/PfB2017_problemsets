@@ -13,14 +13,14 @@ print ("That's all!")
 
 #Q2 while loop factorial of 1000
 
-num = 1000
-fac = 1000
+num = 1
+fac = 1
 
-while num > 1:
-   num -= 1
+while num <= 1000:
    fac *= num
+   num += 1
  
-print ("The factoral of ", num, "is", fac)
+print ("The factoral of 1000 is", fac)
 
 #Q3 iterate list using for loop
 
@@ -92,10 +92,8 @@ start = int(sys.argv[1])
 end = int (sys.argv[2])
 
 for number in range(start, end + 1):
-   if number % 2 == 0: #this means even
-      continue
-   else:
-      print (number, end = ' ')
+   if number % 2 != 0: #this means odd
+      print ("Iteration {0:d}".format(number))
 
 #Q10  make list, use for loop to iterate and print element, length, sequence
 
@@ -146,5 +144,42 @@ print("".join(seq_list))
 
 #Q14  2 DNA seq, align, output fasta, store separate, remove newlines, use for loop with range, report %
 
+#Q15  dictionary of favorite things
 
+faves = ["band" , "The Smiths" , "animal" , "octopus" , "craft" , "knitting"]
+favorites = {}
+for item in range (0, len(faves), 2):
+   favorites [faves[item]] = faves[item + 1]
+print(favorites)
 
+#Q16  iterate thru nt of DNA string, tally any letter, print
+
+dna_seq = 'ATCCNGATTAxnGTCCNAAXGTCCGA'
+nt_count = {}
+for location in range(len(dna_seq)):
+   nt = dna_seq[location].upper()
+   if nt not in nt_count:
+      nt_count[nt] = 1
+   else:
+      nt_count[nt] += 1
+for nt in sorted(nt_count):
+   print("{0:s} = {1:d}".format(nt, nt_count[nt]))
+
+#Q17  find intersection, difference, union, sym diff between sets
+
+setA = set((3, 14, 15, 9, 26, 5, 35, 9))
+setB = set((60, 22, 14, 0, 9))
+
+both = setA & setB
+diffA = setA - setB
+diffB = setB - setA
+all = setA | setB
+symdiff = setA ^ setB
+
+print("Set A {:s}".format(str(setA)))
+print("Set B {:s}".format(str(setB)))
+print("Intersection: {:s}".format(str(both)))
+print("Difference A: {:s}".format(str(diffA)))
+print("Difference B: {:s}".format(str(diffB)))
+print("Union: {:s}".format(str(all))
+print("Symmetric Difference: {:s}".format(str(symdiff)))
