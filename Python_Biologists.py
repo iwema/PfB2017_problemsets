@@ -1,3 +1,5 @@
+#Chapter 2
+
 # Calculating AT content
 
 dna = "ACTGATCGATTACGTATAGTATTTGCTATCATACATATATATCGATGCGTTCAT"
@@ -68,3 +70,68 @@ print (coding)
 
 print (exon1, intron.lower(), exon2)  #this puts a space between each of the elements
 print (exon1 + intron.lower() + exon2) #no spaces between elements
+
+#-----
+
+#Chapter 3
+
+#file_name = "/Users/admin/PfB2017_problemsets/Py4Bio_ex/reading_files/examples/dna.txt" #string, stores name of file
+#file = open (file_name)  #file object, represents the file itself
+#file_contents = file.read()  #string, stores text of file  # read ONLY works on file objects!
+#print (file_contents)
+#ACTGTACGTGCACTGATC #this is the output
+
+dna_practice = open("/Users/admin/PfB2017_problemsets/Py4Bio_ex/reading_files/examples/dna.txt") #needed full file name to get to exact location
+dna_read = dna_practice.read()  #have to do this to actually be able to read the contents of the file that was just opened; opening doesn't equal reading! 
+print (dna_read)
+
+
+#>>> repr(file_contents)   #this function shows a representation of the variable. including the new line
+#"'ACTGTACGTGCACTGATC\\n'"
+
+# Splitting genomic DNA
+
+genomic_read = open("/Users/admin/PfB2017_problemsets/Py4Bio_ex/reading_files/exercises/genomic_dna.txt" , "r")
+genomic = genomic_read.read()
+exon1 = genomic[:64]  #1-63; needs to be one higher b/c str exclusive at end                                
+intron = genomic[64:91]  #start at 64 b/c str inclusive at start
+exon2 = genomic[91:]
+genomic_coding = open("genomic_coding.txt" , "w")
+genomic_noncoding = open("genomic_noncoding.txt" , "w")
+gen_code = genomic_coding.write(exon1 + exon2)
+gen_noncode = genomic_noncoding.write(intron)
+genomic_read.close()
+genomic_coding.close()
+genomic_noncoding.close()
+
+# Writing a FASTA file
+
+header1 = "ABC123"
+header2 = "DEF456"
+header3 = "HIJ789"
+seq1 = "ATCGTACGATCGATCGATCGCTAGACGTATCG"
+seq2 = "actgatcgacgatcgatcgatcacgact"
+seq3 = "ACTGAC-ACTGT--ACTGTA----CATGTG"
+print (">" + header1, "\n" , seq1)
+print (">" + header2, "\n" , seq2.upper())
+print (">" + header3, "\n" , seq3.replace("-" , ""))
+
+output = open ("seq.fasta" , "w")
+output1 = output.write (">" + header1 + "\n" + seq1 + "\n")
+output2 = output.write (">" + header2 + "\n" + seq2.upper() + "\n")
+output3 = output.write (">" + header3 + "\n" + seq3.replace("-" , "") + "\n")
+
+test_read = open("seq.fasta" , "r")
+test = test_read.read()
+print (test)
+
+# Writing multiple FASTA files
+
+out1 = open(header1 + ".fasta" , "w")
+out2 = open(header2 + ".fasta" , "w")
+out3 = open(header3 + ".fasta" , "w")
+
+out1.write (">" + header1 + "\n" + seq1 + "\n")
+out2.write (">" + header2 + "\n" + seq2.upper() + "\n")
+out3.write (">" + header3 + "\n" + seq3.replace("-" , "") + "\n")
+
