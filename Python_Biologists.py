@@ -135,3 +135,48 @@ out1.write (">" + header1 + "\n" + seq1 + "\n")
 out2.write (">" + header2 + "\n" + seq2.upper() + "\n")
 out3.write (">" + header3 + "\n" + seq3.replace("-" , "") + "\n")
 
+#Chapter 4
+
+#file = open("some_input.txt")
+#for line in file:
+## do something with the line
+
+#compare the above with the below--if you read the file rather than just open it, the for loop will go character by character, rather than line by line!
+
+#file = open("some_input.txt")
+#contents = file.read()
+#for line in contents:
+# warning: line contains just a single character!
+
+
+# Processing DNA in a file
+
+chapter4 = open("/Users/admin/PfB2017_problemsets/Py4Bio_ex/lists_and_loops/exercises/input.txt" , "r")
+output = open("trimmed.txt" , "w")
+for dna in chapter4:
+   trimmed = dna[14:]
+   output.write(trimmed)
+   print ("Trimmed DNA with length " + str(len(trimmed)))
+chapter4.close()
+output.close()
+
+
+# Multiple exons from genomic DNA
+
+genomic_dna = open("/Users/admin/PfB2017_problemsets/Py4Bio_ex/lists_and_loops/exercises/genomic_dna.txt" , "r").read()
+exons = open("/Users/admin/PfB2017_problemsets/Py4Bio_ex/lists_and_loops/exercises/exons.txt" , "r")
+
+codingseq = "" 
+
+for line in exons:
+   positions = line.split(",")
+   start = int(positions[0])
+   stop = int(positions[1])
+   exon = genomic_dna[start:stop]
+   codingseq = codingseq + exon
+print("The combined coding sequence is:" , codingseq)
+
+output = open("genomic_exons.txt" , "w")
+output.write(codingseq)
+output.close()
+
