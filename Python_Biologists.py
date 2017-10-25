@@ -196,6 +196,71 @@ print (get_at_content(test_dna, 3))
 
 #write functions to do one job at a time; e.g. calculate something, then print something NOT calculate and print something!
 
+#assertions are used to test whether our created function is behaving as expected.  A group of assertions is called a "test suite"  If the assertion isn't working, there will be an error, as it will not be true
+
+
+# Percentage of amino acid residues, part one
+
+def get_aa_percentage (protein, aa):
+
+   #convert input to upper case, should input be submitted in lower
+
+   protein = protein.upper()
+   aa = aa.upper()
+
+   aa_count = protein.count(aa)
+   protein_length = len(protein)
+   percentage = aa_count * 100 / protein_length
+   return percentage
+
+#test the function with assertions
+
+assert get_aa_percentage("MSRSLLLRFLLFLLLLPPLP", "M") == 5
+assert get_aa_percentage("MSRSLLLRFLLFLLLLPPLP", "r") == 10
+assert get_aa_percentage("msrslllrfllfllllpplp", "L") == 50
+assert get_aa_percentage("MSRSLLLRFLLFLLLLPPLP", "Y") == 0
+
+# Percentage of amino acid residues, part two
+
+protein = "MSRSLLLRFLLFLLLLPPLP"
+aa_list = ['M', 'L', 'F']
+
+# the "total" list  will contain counts for each of the matching aa's
+total = 0
+
+for aa in aa_list:
+   print ("counting number of " + aa)
+   aa = aa.upper()
+   aa_count = protein.count(aa)
+
+   #add number for this aa to the total count
+   total = total + aa_count
+   print("running total is " + str(total))
+
+percentage = total * 100 / len(protein)
+print ("final percentage is " + str(percentage))
+
+######
+
+def get_aa_percentage (protein, aa_list = ['A','I','L','M','F','W','Y','V']):
+   protein = protein.upper()
+   protein_length = len(protein)
+   total = 0
+   for aa in aa_list:
+      aa = aa.upper()
+      aa_count = protein.count(aa)
+      total = total + aa_count
+   percentage = total * 100 / protein_length
+   return percentage
+
+# test the function with assertions
+assert get_aa_percentage("MSRSLLLRFLLFLLLLPPLP", "M") == 5
+assert get_aa_percentage("MSRSLLLRFLLFLLLLPPLP", ["M" , "L"]) == 55
+assert get_aa_percentage("msrslllrfllfllllpplp", ["F" , "L" , "S"]) == 70
+assert get_aa_percentage("MSRSLLLRFLLFLLLLPPLP") == 65
+
+
+
 
 
 
