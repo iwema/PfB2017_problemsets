@@ -1,4 +1,4 @@
-#Chapter 2
+#Chapter 2 : Printing and manipulating text
 
 # Calculating AT content
 
@@ -73,7 +73,7 @@ print (exon1 + intron.lower() + exon2) #no spaces between elements
 
 #-----
 
-#Chapter 3
+#Chapter 3 : Reading and writing files
 
 #file_name = "/Users/admin/PfB2017_problemsets/Py4Bio_ex/reading_files/examples/dna.txt" #string, stores name of file
 #file = open (file_name)  #file object, represents the file itself
@@ -88,6 +88,8 @@ print (dna_read)
 
 #>>> repr(file_contents)   #this function shows a representation of the variable. including the new line
 #"'ACTGTACGTGCACTGATC\\n'"
+ 
+#-----
 
 # Splitting genomic DNA
 
@@ -103,6 +105,8 @@ gen_noncode = genomic_noncoding.write(intron)
 genomic_read.close()
 genomic_coding.close()
 genomic_noncoding.close()
+
+#-----
 
 # Writing a FASTA file
 
@@ -125,6 +129,8 @@ test_read = open("seq.fasta" , "r")
 test = test_read.read()
 print (test)
 
+#-----
+
 # Writing multiple FASTA files
 
 out1 = open(header1 + ".fasta" , "w")
@@ -135,7 +141,9 @@ out1.write (">" + header1 + "\n" + seq1 + "\n")
 out2.write (">" + header2 + "\n" + seq2.upper() + "\n")
 out3.write (">" + header3 + "\n" + seq3.replace("-" , "") + "\n")
 
-#Chapter 4
+#-----
+
+#Chapter 4 : Lists and loops
 
 #file = open("some_input.txt")
 #for line in file:
@@ -148,6 +156,7 @@ out3.write (">" + header3 + "\n" + seq3.replace("-" , "") + "\n")
 #for line in contents:
 # warning: line contains just a single character!
 
+#-----
 
 # Processing DNA in a file
 
@@ -160,6 +169,7 @@ for dna in chapter4:
 chapter4.close()
 output.close()
 
+#-----
 
 # Multiple exons from genomic DNA
 
@@ -180,7 +190,9 @@ output = open("genomic_exons.txt" , "w")
 output.write(codingseq)
 output.close()
 
-#Chapter 5
+#-----
+
+#Chapter 5 : Writing our own functions
 
 def get_at_content(dna, sig_figs):
    length = len(dna)
@@ -198,6 +210,7 @@ print (get_at_content(test_dna, 3))
 
 #assertions are used to test whether our created function is behaving as expected.  A group of assertions is called a "test suite"  If the assertion isn't working, there will be an error, as it will not be true
 
+#-----
 
 # Percentage of amino acid residues, part one
 
@@ -220,6 +233,8 @@ assert get_aa_percentage("MSRSLLLRFLLFLLLLPPLP", "r") == 10
 assert get_aa_percentage("msrslllrfllfllllpplp", "L") == 50
 assert get_aa_percentage("MSRSLLLRFLLFLLLLPPLP", "Y") == 0
 
+#-----
+
 # Percentage of amino acid residues, part two
 
 protein = "MSRSLLLRFLLFLLLLPPLP"
@@ -240,7 +255,7 @@ for aa in aa_list:
 percentage = total * 100 / len(protein)
 print ("final percentage is " + str(percentage))
 
-######
+#-----
 
 def get_aa_percentage (protein, aa_list = ['A','I','L','M','F','W','Y','V']):
    protein = protein.upper()
@@ -259,8 +274,9 @@ assert get_aa_percentage("MSRSLLLRFLLFLLLLPPLP", ["M" , "L"]) == 55
 assert get_aa_percentage("msrslllrfllfllllpplp", ["F" , "L" , "S"]) == 70
 assert get_aa_percentage("MSRSLLLRFLLFLLLLPPLP") == 65
 
+#-----
 
-
+#Chapter 6 : Conditional tests
 
 
 
