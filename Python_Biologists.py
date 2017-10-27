@@ -278,5 +278,51 @@ assert get_aa_percentage("MSRSLLLRFLLFLLLLPPLP") == 65
 
 #Chapter 6 : Conditional tests
 
+# Several species
+
+# our function to get AT content
+def get_at_content(dna):
+   length = len(dna)
+   a_count = dna.upper().count('A')
+   t_count = dna.upper().count('T')
+   at_content = (a_count + t_count) / length
+   return at_content
+
+data = open("/Users/admin/PfB2017_problemsets/Py4Bio_ex/conditional_tests/exercises/data.csv")
+for line in data:
+   columns = line.rstrip("\n").split(",")
+   species = columns[0]
+   sequence = columns[1]
+   gene = columns[2]
+   expression = int(columns[3])
+
+   if species == "Drosophila melanogaster" or species == "Drosophila simulans" :
+      print(gene)
+
+   if len(sequence) > 90 and len(sequence) < 110 :
+      print(gene)
+
+   if get_at_content(sequence) <0.5 and expression >200 :
+      print(gene)
+
+   if gene.startswith("k") or gene.startswith("h") and species != "Drosophila melanogaster" :
+      print(gene)
+
+   if get_at_content(sequence) > 0.65 :
+      print (gene + " has a high AT content.")
+
+   elif get_at_content(sequence) < 0.45 :
+      print (gene + " has a low AT content.")
+
+   else:
+      print (gene + " has a medium AT content.")
+
+# no practice exercises for ch6
+
+#-----
+
+# Chapter 7 : Regular expressions
+
+
 
 
