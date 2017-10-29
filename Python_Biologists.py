@@ -323,6 +323,80 @@ for line in data:
 
 # Chapter 7 : Regular expressions
 
+import re
 
+# accession names
+
+accessions = ['xkn59438', 'yhdck2', 'eihd39d9', 'chdsye847', 'hedle3455', 'xjhd53e', '45da', 'de37dp']
+for acc in accessions:
+#   if re.search (r"5" , acc):
+#      print(acc)
+#   if re.search (r"[de]" , acc):
+#      print(acc)
+#   if re.search (r"d.*e", acc):
+#      print(acc)
+#   if re.search (r"d.e", acc):
+#      print(acc)
+#   if re.search (r"d.*e" , acc) or re.search (r"e.*d", acc):
+#      print (acc)
+#   if re.search (r"^[xy]" , acc):
+#      print (acc)
+#   if re.search (r"^[xy].*e$" , acc):
+#      print(acc)
+#   if re.search (r"\d{3,}" , acc):
+#      print(acc)
+#   if re.search (r"d[arp]$" , acc):
+#      print(acc)
+
+#-----
+
+# double digest
+
+dna = open("/Users/admin/PfB2017_problemsets/Py4Bio_ex/regular_expressions/exercises/dna.txt", "r").read().rstrip("\n")
+
+all_cuts = [0]
+
+# add cut positions for AbcI
+for match in re.finditer(r"A[ATGC]TAAT" , dna):
+   all_cuts.append(match.start() + 3)
+
+# add cut positions for AbcII
+for match in re.finditer(r"GC[AG][AT]TG" , dna):
+   all_cuts.append(match.start() + 4)
+
+# add the final position
+all_cuts.append(len(dna))
+sorted_cuts = sorted(all_cuts)
+print(sorted_cuts)
+
+
+for i in range(1,len(sorted_cuts)):
+   this_cut_position = sorted_cuts[i]
+   previous_cut_position = sorted_cuts[i-1]
+   fragment_size = this_cut_position - previous_cut_position
+   print("one fragment size is " + str(fragment_size))
+
+#-----
+
+# Chapter 8 : Dictionaries
+
+# DNA translation
+
+# (1) split seq into codons, (2) translate codons into aa, (3) join aa to see protein seq
+
+gencode = open("/Users/admin/PfB2017_problemsets/Py4Bio_ex/dicts/exercises/genetic_code.txt" , "r").read().rsplit("\n")
+
+dna = "ATGTTCGGT"
+
+# split() doesn't help here b/c there's nothing separating the codons
+# range() generates sequences of numbers; (0,0,0) = start, stop, step size
+
+# problem set didn't give a final answer, it takes the whole thing step by step
+
+#-----
+
+# Chapter 9 : Files, programs, and user input
+
+# Binding DNA sequences: (1) iterate files in folder, (2) iterate lines in file, (3) output to folder based on length
 
 
