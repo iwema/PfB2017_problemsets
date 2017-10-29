@@ -323,12 +323,12 @@ for line in data:
 
 # Chapter 7 : Regular expressions
 
-import re
+#import re
 
 # accession names
 
-accessions = ['xkn59438', 'yhdck2', 'eihd39d9', 'chdsye847', 'hedle3455', 'xjhd53e', '45da', 'de37dp']
-for acc in accessions:
+#accessions = ['xkn59438', 'yhdck2', 'eihd39d9', 'chdsye847', 'hedle3455', 'xjhd53e', '45da', 'de37dp']
+#for acc in accessions:
 #   if re.search (r"5" , acc):
 #      print(acc)
 #   if re.search (r"[de]" , acc):
@@ -352,29 +352,29 @@ for acc in accessions:
 
 # double digest
 
-dna = open("/Users/admin/PfB2017_problemsets/Py4Bio_ex/regular_expressions/exercises/dna.txt", "r").read().rstrip("\n")
+#dna = open("/Users/admin/PfB2017_problemsets/Py4Bio_ex/regular_expressions/exercises/dna.txt", "r").read().rstrip("\n")
 
-all_cuts = [0]
+#all_cuts = [0]
 
 # add cut positions for AbcI
-for match in re.finditer(r"A[ATGC]TAAT" , dna):
-   all_cuts.append(match.start() + 3)
+#for match in re.finditer(r"A[ATGC]TAAT" , dna):
+#   all_cuts.append(match.start() + 3)
 
 # add cut positions for AbcII
-for match in re.finditer(r"GC[AG][AT]TG" , dna):
-   all_cuts.append(match.start() + 4)
+#for match in re.finditer(r"GC[AG][AT]TG" , dna):
+#   all_cuts.append(match.start() + 4)
 
 # add the final position
-all_cuts.append(len(dna))
-sorted_cuts = sorted(all_cuts)
-print(sorted_cuts)
+#all_cuts.append(len(dna))
+#sorted_cuts = sorted(all_cuts)
+#print(sorted_cuts)
 
 
-for i in range(1,len(sorted_cuts)):
-   this_cut_position = sorted_cuts[i]
-   previous_cut_position = sorted_cuts[i-1]
-   fragment_size = this_cut_position - previous_cut_position
-   print("one fragment size is " + str(fragment_size))
+#for i in range(1,len(sorted_cuts)):
+#   this_cut_position = sorted_cuts[i]
+#   previous_cut_position = sorted_cuts[i-1]
+#   fragment_size = this_cut_position - previous_cut_position
+#   print("one fragment size is " + str(fragment_size))
 
 #-----
 
@@ -384,9 +384,9 @@ for i in range(1,len(sorted_cuts)):
 
 # (1) split seq into codons, (2) translate codons into aa, (3) join aa to see protein seq
 
-gencode = open("/Users/admin/PfB2017_problemsets/Py4Bio_ex/dicts/exercises/genetic_code.txt" , "r").read().rsplit("\n")
+#gencode = open("/Users/admin/PfB2017_problemsets/Py4Bio_ex/dicts/exercises/genetic_code.txt" , "r").read().rsplit("\n")
 
-dna = "ATGTTCGGT"
+#dna = "ATGTTCGGT"
 
 # split() doesn't help here b/c there's nothing separating the codons
 # range() generates sequences of numbers; (0,0,0) = start, stop, step size
@@ -398,5 +398,88 @@ dna = "ATGTTCGGT"
 # Chapter 9 : Files, programs, and user input
 
 # Binding DNA sequences: (1) iterate files in folder, (2) iterate lines in file, (3) output to folder based on length
+
+#import os
+
+#for bin_lower in range(100,1000,100):  #loop for each bin                                                                            
+#   bin_upper = bin_lower + 99
+#   bin_folder_name = str(bin_lower) + "_" + str(bin_upper)
+#   os.mkdir(bin_folder_name)
+
+#def process_sequence(line, number):
+#   dna = line.rstrip("\n")
+#   length = len(dna)
+#   print("sequence length is " + str(length))
+#   for bin_lower in range(100,1000,100):  #loop for each bin 
+#      bin_upper = bin_lower + 99
+#      if length >= bin_lower and length <= bin_upper:  #if statement checking if sequence belongs in bin
+#         print("bin is " + str(bin_lower) + " to " + str(bin_upper))
+#         bin_folder_name = str(bin_lower) + "_" + str(bin_upper)
+#         output_path = bin_folder_name + "/" + str(seq_number) + ".dna" 
+
+#         output = open(output_path, "w")
+#         output.write(dna)
+#         output.close()
+
+#seq_number = 1
+#for file_name in os.listdir("."):  #loop for each filename
+#IMPORTANT: need to be running Python from the folder where these .dna files are located!!!  I.e. it wasn't working when I was in the "master" file, PfB2017_problemsets
+#   if file_name.endswith(".dna"):  #if statement that checks filename
+#      print("reading sequences from " + file_name)
+
+#      dna_file = open(file_name)
+#      for line in dna_file:  #loop for each sequence in file
+#         process_sequence(line, seq_number)
+#         seq_number = seq_number+1
+
+#-----
+
+# Kmer counting
+
+import os, sys
+
+#convert command line arguments to variables
+kmer_size = int(sys.argv[1])
+count_cutoff = int(sys.argv[2])
+
+#define the function to split dna
+def split_dna(dna, kmer_size):
+    kmers = []
+    for start in range(0, len(dna) - (kmer_size-1),1):
+        kmer = dna[start:start+kmer_size]
+        kmers.append(kmer)
+    return kmers
+
+#create empty dictionary to hold counts
+kmer_counts = {}
+
+#process each file with correct name
+for file_name in os.listdir("."):
+    if file_name.endswith(".dna"):
+        dna_file = open(file_name)
+
+        #process each DNA sequence in a file
+        for line in dna_file:
+            dna = line.rstrip("\n")
+
+            #increase the count for each kmer found
+            for kmer in split_dna(dna, kmer_size):
+                current_count = kmer_counts.get(kmer, 0)
+                new_count = current_count + 1
+                kmer_counts[kmer] = new_count
+
+#print kmers whose counts are above the entered cutoff
+for kmer, count in kmer_counts.items():
+    if count > count_cutoff:
+        print(kmer + " : " + str(count))
+
+#test_dna = "ACTGTAGCTGTACGTAGC"
+#print (test_dna)
+#kmer_size = 4
+#for start in range(0, len(test_dna) - kmer_size + 1,1):
+#   kmer = test_dna[start:start+kmer_size]
+#   print(kmer)
+
+
 
 
